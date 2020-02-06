@@ -73,10 +73,20 @@ else:
 	driver.quit()
 
 
+#Page 2
+#Questions
+print('Please answer the follwing questions: ')
+question1 = raw_input('What was your biggest achievement this week? ')
+wait.until(element_to_be_clickable((By.ID, 'tfa_271'))).click()
+wait.until(EC.visibility_of_element_located((By.ID, 'tfa_271'))).send_keys(question1)
 
+question2 = raw_input('What work related challenges are you currently facing?  How do you plan to overcome them? ')
+wait.until(element_to_be_clickable((By.ID, 'tfa_272'))).click()
+wait.until(EC.visibility_of_element_located((By.ID, 'tfa_272'))).send_keys(question2)
 
-
-
+question3 = raw_input(' How do you plan to continue to grow your skills in your current role?  Identify one goal for yourself on your internship next week. ')
+wait.until(element_to_be_clickable((By.ID, 'tfa_273'))).click()
+wait.until(EC.visibility_of_element_located((By.ID, 'tfa_273'))).send_keys(question3)
 
 
 
