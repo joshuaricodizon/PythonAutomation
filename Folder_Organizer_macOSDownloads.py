@@ -1,29 +1,29 @@
 import os, shutil
 
-# finding the folder path
+# Folder path
 Path = '/Users/joshuadizon/Downloads'
 
-# adding all the files to a list
+# Creating a list of all files
 files = os.listdir(Path)
 
-# go through every file in the download folder and creates a new variable called file
+# Creates a variable for every single file within Downloads.
 for file in sorted(files):
 
-	# splits the file name and the file extention, name of the file wont be used
+	# Splits file name from file extension
 	name, extension = os.path.splitext(file)
 
-	# removes the '.' form the extension
+	# Removes "." (period) from the file name and replaces it with a [space].
 	extension = extension.replace('.','')
 
-	# Gets rid of any extention bugs	 
+	# Rids of extension bugs (human error)	 
 	if extension == '':
 		continue
 	
-	# statement to see if theres a folder with the same name as the extention and if its true then move to it.
+	# Checks if there is a folder with the existing file extension.
 	if os.path.exists(Path + '/' + extension):
 		shutil.move(Path +'/'+ file, Path + '/' + extension + '/' + file)
 		
-	# if theres not folder then create one and move the file to corresponding folder with the same extention
+	# If there is no folder with the same file extension, it creates a new one for the brand new file extension found.
 	else:
 		os.makedirs(Path + '/' + extension)
 		shutil.move(Path + '/' + file, Path + '/' + extension + '/' + file)
