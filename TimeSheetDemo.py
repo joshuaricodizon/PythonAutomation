@@ -1,4 +1,16 @@
-from modules import *
+
+import sys
+import time
+import os
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import WebDriverException
 
 executable_path = "/Users/joshuadizon/desktop/automation-project-yuba/chromedriver"
 link = raw_input('Please enter your timesheet link: ')
@@ -7,8 +19,8 @@ chrome_options = Options()
 driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=executable_path)
 driver.maximize_window()
 wait = WebDriverWait(driver, 20)
-# driver.get('https://yearup.tfaforms.net/forms/view/261392?tfa_97=0033800002xB9HB&tfa_99=a0j1T00000ISFUb')
-driver.get(link)
+
+driver.get('https://yearup.tfaforms.net/forms/view/261392?tfa_97=0033800002xB9HB&tfa_99=a0j1T00000ISQJ5')
 
 #PAGE 1
 #Monday
@@ -72,35 +84,27 @@ else:
 	print('You did not choose an option. Driver will close.')
 	driver.quit()
 
-
 #Page 2
 #Questions
 print('Please answer the follwing questions: ')
 question1 = raw_input('What was your biggest achievement this week? ')
-wait.until(element_to_be_clickable((By.ID, 'tfa_271'))).click()
+wait.until(EC.element_to_be_clickable((By.ID, 'tfa_271'))).click()
 wait.until(EC.visibility_of_element_located((By.ID, 'tfa_271'))).send_keys(question1)
 
 question2 = raw_input('What work related challenges are you currently facing?  How do you plan to overcome them? ')
-wait.until(element_to_be_clickable((By.ID, 'tfa_272'))).click()
+wait.until(EC.element_to_be_clickable((By.ID, 'tfa_272'))).click()
 wait.until(EC.visibility_of_element_located((By.ID, 'tfa_272'))).send_keys(question2)
 
 question3 = raw_input(' How do you plan to continue to grow your skills in your current role?  Identify one goal for yourself on your internship next week. ')
-wait.until(element_to_be_clickable((By.ID, 'tfa_273'))).click()
+wait.until(EC.element_to_be_clickable((By.ID, 'tfa_273'))).click()
 wait.until(EC.visibility_of_element_located((By.ID, 'tfa_273'))).send_keys(question3)
 
+# Custom Questions
+print('This next portion consists of questions of your choice. Please complete this portion of the timesheet manually, the automation for this portion is still being worked on.')
 
 
-
-
-
-
-
-
-
-
-
-
-
+if intern_bool_2 == 'yes':
+	wait.until(EC.element_to_be_clickable((By.ID, ''))).click()
 
 
 
