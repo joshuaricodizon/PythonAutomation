@@ -1,16 +1,4 @@
-
-import sys
-import time
-import os
-
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import WebDriverException
+from modules import *
 
 executable_path = "/Users/joshuadizon/desktop/automation-project-yuba/chromedriver"
 link = raw_input('Please enter your timesheet link: ')
@@ -103,8 +91,13 @@ wait.until(EC.visibility_of_element_located((By.ID, 'tfa_273'))).send_keys(quest
 print('This next portion consists of questions of your choice. Please complete this portion of the timesheet manually, the automation for this portion is still being worked on.')
 
 
+# Last Question
+intern_bool_2 = raw_input('Do you feel that you would benefit from extra support from Year Up this week? (yes or no): ')
 if intern_bool_2 == 'yes':
 	wait.until(EC.element_to_be_clickable((By.ID, ''))).click()
+else:
+	wait.until(EC.element_to_be_clickable((By.ID, ''))).click()
+	
 
 
 
